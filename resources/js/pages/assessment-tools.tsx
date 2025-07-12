@@ -169,13 +169,16 @@ export default function AssessmentTools({ tools, userLimits, locale }: Assessmen
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title={t.title} />
-            <div className={`${language === 'ar' ? 'rtl' : 'ltr'} p-6`} dir={language === 'ar' ? 'rtl' : 'ltr'}>
+            <div
+                className={`${language === 'ar' ? 'rtl' : 'ltr'} min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 p-6 text-white`}
+                dir={language === 'ar' ? 'rtl' : 'ltr'}
+            >
                 <div className="flex items-center justify-between mb-6">
                     <h1 className="text-3xl font-bold flex items-center gap-2">
-                        <Target className="w-6 h-6 text-blue-600" />
+                        <Target className="w-6 h-6 text-white" />
                         {t.title}
                     </h1>
-                    <Button variant="outline" size="sm" onClick={toggleLanguage}>
+                    <Button variant="outline" size="sm" onClick={toggleLanguage} className="border-white text-white hover:bg-white hover:text-black">
                         <Globe className="w-4 h-4 mr-1" />
                         {language === 'en' ? 'عربي' : 'English'}
                     </Button>
@@ -187,7 +190,7 @@ export default function AssessmentTools({ tools, userLimits, locale }: Assessmen
                         placeholder={t.searchPlaceholder}
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="pl-10"
+                        className="pl-10 bg-gray-800 text-white border-gray-700"
                     />
                 </div>
 
@@ -201,7 +204,7 @@ export default function AssessmentTools({ tools, userLimits, locale }: Assessmen
 
                             const showRequest = tool.status === 'active' && !tool.has_access;
                             return (
-                                <Card key={tool.id} className="flex flex-col overflow-hidden shadow-md">
+                                <Card key={tool.id} className="flex flex-col overflow-hidden shadow-md bg-white text-black">
                                     {tool.image && (
                                         <img
                                             src={tool.image}

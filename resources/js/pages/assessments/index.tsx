@@ -111,12 +111,20 @@ export default function AssessmentsIndex({ assessments, locale, auth }: Assessme
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title={t.title} />
 
-            <div className={`${language === 'ar' ? 'rtl' : 'ltr'} p-6`} dir={language === 'ar' ? 'rtl' : 'ltr'}>
+            <div
+                className={`${language === 'ar' ? 'rtl' : 'ltr'} min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 p-6 text-white`}
+                dir={language === 'ar' ? 'rtl' : 'ltr'}
+            >
                 <div className="flex items-center justify-between mb-4">
                     <h1 className="text-2xl font-bold flex items-center gap-2">
-                        <Award className="w-5 h-5 text-primary" /> {t.title}
+                        <Award className="w-5 h-5 text-white" /> {t.title}
                     </h1>
-                    <Button variant="outline" size="sm" onClick={toggleLanguage} className="flex items-center gap-2">
+                    <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={toggleLanguage}
+                        className="flex items-center gap-2 border-white text-white hover:bg-white hover:text-black"
+                    >
                         <Globe className="w-4 h-4" />
                         <span>{language === 'en' ? 'عربي' : 'English'}</span>
                     </Button>
@@ -128,7 +136,7 @@ export default function AssessmentsIndex({ assessments, locale, auth }: Assessme
                         placeholder={t.searchPlaceholder}
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="pl-9"
+                        className="pl-9 bg-gray-800 text-white border-gray-700"
                     />
                 </div>
 
@@ -138,7 +146,7 @@ export default function AssessmentsIndex({ assessments, locale, auth }: Assessme
                             const isComplete = a.status === 'completed';
                             const url = isComplete ? resultsUrl(a) : continueUrl(a);
                             return (
-                                <Card key={a.id} className="flex flex-col overflow-hidden">
+                                <Card key={a.id} className="flex flex-col overflow-hidden bg-white text-black">
                                     {a.tool.image && (
                                         <img
                                             src={a.tool.image}
